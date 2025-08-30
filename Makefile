@@ -83,7 +83,7 @@ clean:
 	@echo " Cleaning up..."
 	@rm -f /tmp/helix.tar.xz
 	@rm -rf /tmp/helix-*-$(ARCH)-$(OS)
-echo " Cleaning up..."
+	echo " Cleaning up..."
 	@rm -f /tmp/helix.tar.xz
 	@rm -rf /tmp/helix-*-$(ARCH)-$(OS)
 	@rm -rf /tmp/helix-*-$(ARCH)-$(RELEASE_OS)
