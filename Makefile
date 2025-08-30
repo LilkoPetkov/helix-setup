@@ -3,8 +3,10 @@ LOCAL_BIN := $(HOME)/.local/bin
 SHELL := /bin/bash
 OS := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 ARCH := $(shell uname -m)
+RELEASE_OS := $(OS)
 
 ifeq ($(OS),darwin)
+	RELEASE_OS := macos
 	ifeq ($(ARCH),arm64)
 		ARCH := aarch64
 	endif
@@ -42,14 +44,14 @@ setup-config:
 install-helix:
 	@echo " Installing Helix editor..."
 	@mkdir -p $(LOCAL_BIN)
-	@LATEST_HELIX_URL=$$(curl -s "https://api.github.com/repos/helix-editor/helix/releases/latest" | grep "browser_download_url.*helix-.*-$(ARCH)-$(OS)\.tar\.xz" | cut -d '"' -f 4 | head -n 1); \
+	@LATEST_HELIX_URL=$$(curl -s "https://api.github.com/repos/helix-editor/helix/releases/latest" | grep "browser_download_url.*helix-.*-$(ARCH)-$(RELEASE_OS)\\.tar\\.xz" | cut -d '"' -f 4 | head -n 1); \
 	if [ -z "$$LATEST_HELIX_URL" ]; then \
-		echo "❌ Error: Could not find a download URL for Helix for your system ($(OS)/$(ARCH))."; \
+		echo "❌ Error: Could not find a download URL for Helix for your system ($(RELEASE_OS)/$(ARCH))."; \
 		exit 1; \
 	fi; \
 	curl -L $$LATEST_HELIX_URL -o /tmp/helix.tar.xz
-	tar -xvf /tmp/helix.tar.xz -C /tmp
-	mv /tmp/helix-*-$(ARCH)-$(OS)/hx $(LOCAL_BIN)/
+tar -xvf /tmp/helix.tar.xz -C /tmp
+mv /tmp/helix-*-$(ARCH)-$(RELEASE_OS)/hx $(LOCAL_BIN)/
 	@rm -rf /tmp/helix*
 	@echo "✅ Helix installed to $(LOCAL_BIN)/hx"
 
@@ -80,7 +82,4 @@ install-go-tools:
 clean:
 	@echo " Cleaning up..."
 	@rm -f /tmp/helix.tar.xz
-	@rm -rf /tmp/helix-*-$(ARCH)-$(OS)
-echo " Cleaning up..."
-	@rm -f /tmp/helix.tar.xz
-	@rm -rf /tmp/helix-*-$(ARCH)-$(OS)
+	@rm -rf /tmp/helix-*-$(ARCH)-$(RELEASE_OS)
