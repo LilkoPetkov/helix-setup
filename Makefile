@@ -49,9 +49,9 @@ install-helix:
 	fi; \
 	curl -L $$LATEST_HELIX_URL -o /tmp/helix.tar.xz
 	tar -xvf /tmp/helix.tar.xz -C /tmp
-	mv /tmp/helix-*-$(ARCH)-$(OS)/hx $(LOCAL_BIN)/
-	@rm -rf /tmp/helix*
-	@echo "✅ Helix installed to $(LOCAL_BIN)/hx"
+	mv /tmp/helix-*-$(ARCH)-$(RELEASE_OS)/hx $(LOCAL_BIN)/
+		@rm -rf /tmp/helix*
+		@echo "✅ Helix installed to $(LOCAL_BIN)/hx"
 
 install-tools: install-py-tools install-go-tools
 
@@ -66,7 +66,7 @@ install-py-tools:
 		echo "❌ Error: pip3 is not installed. Please install Python and pip."; \
 		exit 1; \
 	fi
-	@pip3 install -U ruff $(PIP_FLAGS)
+	@pip3 install -U ruff --break-system-packages
 
 install-go-tools:
 	@echo " Installing Go tools (gopls, gofumpt)..."
@@ -80,7 +80,11 @@ install-go-tools:
 clean:
 	@echo " Cleaning up..."
 	@rm -f /tmp/helix.tar.xz
+<<<<<<< Updated upstream
 	@rm -rf /tmp/helix-*-$(ARCH)-$(OS)
 echo " Cleaning up..."
 	@rm -f /tmp/helix.tar.xz
 	@rm -rf /tmp/helix-*-$(ARCH)-$(OS)
+=======
+	@rm -rf /tmp/helix-*-$(ARCH)-$(RELEASE_OS)
+>>>>>>> Stashed changes
