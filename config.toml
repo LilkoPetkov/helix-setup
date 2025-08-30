@@ -1,0 +1,29 @@
+theme = "catppuccin_mocha"
+
+[editor]
+line-number = "relative"
+color-modes = true
+true-color = true
+auto-completion = true
+continue-comments = false
+cursorline = true
+completion-timeout = 5
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+
+[keys.normal]
+S-w = ":w"
+S-q = ":q"
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
+
+[editor.file-picker]
+hidden = false
+ignore = true

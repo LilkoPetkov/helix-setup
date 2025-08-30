@@ -1,0 +1,13 @@
+# Python virtual environments
+!.venv
+!**/.venv
+!venv
+!**/venv
+!.env
+!**/.env
+!env
+!**/env
+
+# Un-ignore contents of venv directories created by 'uv'
+!venv/**
+!**/venv/**

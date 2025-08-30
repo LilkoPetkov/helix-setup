@@ -1,0 +1,27 @@
+# Language Server Definitions
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.gopls]
+command = "gopls"
+args = []
+
+[language-server.gopls.config]
+  "gopls.formatting.local" = "gofmt"
+
+# Python
+[[language]]
+name = "python"
+file-types = ["py"]
+language-servers = ["pyright"]
+auto-format = true
+formatter = { command = "ruff", args = ["format", "-"] }
+
+# Go
+[[language]]
+name = "go"
+file-types = ["go"]
+language-servers = ["gopls"]
+auto-format = true
+formatter = { command = "gofumpt" }
