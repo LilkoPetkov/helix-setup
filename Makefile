@@ -66,7 +66,7 @@ install-py-tools:
 		echo "❌ Error: pip3 is not installed. Please install Python and pip."; \
 		exit 1; \
 	fi
-	@pip3 install -U ruff --break-system-packages
+	@pip3 install -U ruff $(PIP_FLAGS)
 
 install-go-tools:
 	@echo " Installing Go tools (gopls, gofumpt)..."
@@ -79,5 +79,8 @@ install-go-tools:
 
 clean:
 	@echo " Cleaning up..."
+	@rm -f /tmp/helix.tar.xz
+	@rm -rf /tmp/helix-*-$(ARCH)-$(OS)
+echo " Cleaning up..."
 	@rm -f /tmp/helix.tar.xz
 	@rm -rf /tmp/helix-*-$(ARCH)-$(OS)
