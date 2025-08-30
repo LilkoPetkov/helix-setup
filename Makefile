@@ -61,12 +61,12 @@ install-py-tools:
 		echo "❌ Error: npm is not installed. Please install Node.js and npm."; \
 		exit 1; \
 	fi
-	@npm install -g pyright
+	@npm install -g --prefix=$(HOME)/.local pyright
 	@if ! command -v pip3 &> /dev/null; then \
 		echo "❌ Error: pip3 is not installed. Please install Python and pip."; \
 		exit 1; \
 	fi
-	@pip3 install -U ruff
+	@pip3 install -U ruff --break-system-packages
 
 install-go-tools:
 	@echo " Installing Go tools (gopls, gofumpt)..."
