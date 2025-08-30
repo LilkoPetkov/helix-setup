@@ -82,15 +82,8 @@ install-go-tools:
 clean:
 	@echo " Cleaning up..."
 	@rm -f /tmp/helix.tar.xz
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 	@rm -rf /tmp/helix-*-$(ARCH)-$(OS)
 echo " Cleaning up..."
 	@rm -f /tmp/helix.tar.xz
 	@rm -rf /tmp/helix-*-$(ARCH)-$(OS)
-=======
 	@rm -rf /tmp/helix-*-$(ARCH)-$(RELEASE_OS)
->>>>>>> Stashed changes
-=======
-	@rm -rf /tmp/helix-*-$(ARCH)-$(RELEASE_OS)
->>>>>>> 64a5f0c2ea5bea6b3ba1a4f6df8d41e5abd73d89
