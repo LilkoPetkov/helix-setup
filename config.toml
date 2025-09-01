@@ -27,3 +27,6 @@ cursor-line = "hint"
 [editor.file-picker]
 hidden = false
 ignore = true
+
+[keys.normal.space]
+f = "file_picker_in_current_directory"
